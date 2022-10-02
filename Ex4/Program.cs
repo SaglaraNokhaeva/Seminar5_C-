@@ -7,36 +7,32 @@
 Console.Clear();
 Console.WriteLine("Введите размерность массива: ");
 int razmer = Convert.ToInt32(Console.ReadLine()); 
-int[] array = FillArray(razmer, -100, 100);
-PrintArray(newarray);
-//int[] newarray = MultiplyElem(razmer, -100, 100);
-/*int[] array1 = new int[3];
-int j= 0;
-    for (int i = 0; i < array1.Length; i++)
-        {
-        array1[i] =array[i]*array[array.Length-j-1];
-        j=j+1;
-    }   
+int[] array = FillArray(razmer, 0, 10);
+PrintArray(array);
+MultiplyElem(array);
+PrintArray(MultiplyElem(array));
 
-*/
-int[] MultiplyElem(int[] array_local) {     
-    int Len = 0;      
-    if (array_local.Length % 2 == 0) Len = array_local.Length / 2;     
-    else        
-    Len = array_local.Length / 2 + 1;      
-    int[] new_array = new int[Len];      
-    for (int i = 0; i < Len; i++)
+int [] MultiplyElem(int[] arr) {  
+    int new_arr_length =  razmer;
+    if (razmer % 2 == 1) new_arr_length=new_arr_length+1;     
+    int[] new_arr = new int[new_arr_length/2];      
+    int k=razmer-1;
+    for (int i = 0; i < razmer/2; i++)
     {
-        new_array[i] = array_local[i] * array_local[array_local.Length - 1 - i];
-    }}
+        new_arr[i] = arr[i] * arr[k];
+        k--;
+    }
+    if (razmer % 2 == 1) new_arr[new_arr_length/2-1] = arr[new_arr_length/2-1];
+    return new_arr;
+    }
 
 void PrintArray(int[] arr) {     
     Console.WriteLine("\n [" + String.Join(",", arr) + "]"); 
     } 
 
 
-Console.WriteLine("[" + String.Join(",",array)+ "]"); 
-Console.WriteLine("[" + String.Join(",",newarray)+ "]"); 
+//Console.WriteLine("[" + String.Join(",",array)+ "]"); 
+//Console.WriteLine("[" + String.Join(",",new_array)+ "]"); 
 
 
 
